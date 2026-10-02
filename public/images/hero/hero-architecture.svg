@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" fill="#0F172A"/>
+  <g opacity=".12" stroke="#FAF9F6" stroke-width="1">
+    <path d="M80 0v900M180 0v900M280 0v900M380 0v900M480 0v900M580 0v900M680 0v900M780 0v900M880 0v900M980 0v900M1080 0v900"/>
+    <path d="M0 80h1200M0 180h1200M0 280h1200M0 380h1200M0 480h1200M0 580h1200M0 680h1200M0 780h1200"/>
+  </g>
+  <g stroke="#C5A059" stroke-width="2">
+    <path d="M170 730V250L420 120l260 150v460H170Z"/>
+    <path d="M420 120v610M680 270l220 130v330H680M900 400l150 95v235H900"/>
+    <path d="M250 690V360l170-95 170 95v330M250 515h340M420 265v425"/>
+  </g>
+  <g stroke="#FAF9F6" stroke-width="1.5" opacity=".65">
+    <path d="M120 760h840M120 790h840M960 760h120M960 790h120"/>
+    <path d="M1050 120v610M1075 120v610"/>
+  </g>
+  <g fill="#FAF9F6" opacity=".72" font-family="Arial, sans-serif" font-size="18" letter-spacing="5">
+    <text x="70" y="105">OC</text>
+    <text x="70" y="835">01—03</text>
+  </g>
+</svg>
