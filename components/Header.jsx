@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import Icon from './ui/Icon'
 
+const headerLogoSrc = '/logo/header_latest.png'
+
 export default function Header({ data }) {
   const [isOpen, setIsOpen] = useState(false)
   const menuButtonRef = useRef(null)
@@ -80,7 +82,7 @@ export default function Header({ data }) {
         <div className="container-shell flex min-h-[4.75rem] items-center justify-between gap-6">
           <a href="#home" aria-label={data.brand.name} className="shrink-0">
             <Image
-              src={data.brand.logo}
+              src={headerLogoSrc}
               alt={data.brand.logoAlt}
               width={180}
               height={48}
@@ -148,7 +150,7 @@ export default function Header({ data }) {
             >
               <div className="flex items-center justify-between border-b border-ink/10 pb-5">
                 <Image
-                  src={data.brand.logo}
+                  src={headerLogoSrc}
                   alt={data.brand.logoAlt}
                   width={150}
                   height={40}

@@ -4,6 +4,7 @@ export const siteData = {
     tagline: 'Building Excellence & Architectural Mastery',
     copyright: '© 2024 Origin Construction. All Rights Reserved. Powered by Origin Softwares.',
     logo: '/logo/o3.png',
+  
     logoAlt: 'Origin Constructions logo'
   },
 
