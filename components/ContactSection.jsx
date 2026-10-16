@@ -10,22 +10,47 @@ const initialValues = {
   name: '',
   email: '',
   phone: '',
-  message: ''
+  projectType: '',
+  location: '',
+  description: '',
+  budget: ''
 }
+
+const projectTypes = [
+  'Residential',
+  'Commercial',
+  'Villa',
+  'Apartment',
+  'Renovation',
+  'Interior Design',
+  'Other'
+]
+
+const budgetRanges = [
+  'Under ₹10L',
+  '₹10L - ₹25L',
+  '₹25L - ₹50L',
+  '₹50L - ₹1Cr',
+  '₹1Cr+',
+  'Not Sure Yet'
+]
 
 function validate(values) {
   const errors = {}
 
-  if (!values.name.trim()) errors.name = 'Name is required.'
-  if (!values.email.trim()) {
-    errors.email = 'Email is required.'
-  } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
+  if (!values.name.trim()) errors.name = 'Full name is required.'
+  if (values.email.trim() && !/^\S+@\S+\.\S+$/.test(values.email)) {
     errors.email = 'Enter a valid email address.'
   }
-  if (values.phone.trim() && !/^[0-9+()\-\s]{7,}$/.test(values.phone)) {
+  const phoneDigits = values.phone.replace(/\D/g, '')
+  if (!values.phone.trim()) {
+    errors.phone = 'Phone number is required.'
+  } else if (!/^\+?[0-9()\-\s]+$/.test(values.phone) || phoneDigits.length < 7 || phoneDigits.length > 15) {
     errors.phone = 'Enter a valid phone number.'
   }
-  if (!values.message.trim()) errors.message = 'Message is required.'
+  if (!projectTypes.includes(values.projectType)) errors.projectType = 'Select a project type.'
+  if (!values.location.trim()) errors.location = 'Project location is required.'
+  if (!values.description.trim()) errors.description = 'Project description is required.'
 
   return errors
 }
@@ -54,63 +79,78 @@ export default function ContactSection({ data, brand }) {
 
     setStatus('preparing')
 
-    const subject = `${brand.name} enquiry from ${values.name}`
+    const subject = `${brand.name} project enquiry from ${values.name}`
     const body = [
-      `Name: ${values.name}`,
-      `Email: ${values.email}`,
-      `Phone: ${values.phone || 'Not provided'}`,
+      `Full Name: ${values.name.trim()}`,
+      `Email: ${values.email.trim() || 'Not provided'}`,
+      `Phone: ${values.phone.trim()}`,
+      `Project Type: ${values.projectType}`,
+      `Project Location: ${values.location.trim()}`,
+      `Budget Range: ${values.budget || 'Not provided'}`,
       '',
-      'Message:',
-      values.message
+      'Project Description:',
+      values.description.trim()
     ].join('\n')
 
+    // Replace this mailto handoff with the project API call when a backend is available.
     const mailto = `mailto:${data.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     window.location.href = mailto
     setStatus('success')
   }
 
   return (
-    <section id="contact" className="scroll-mt-24 border-t border-ink/10 bg-[#f2f1ed] py-24 sm:py-28 lg:py-32">
+    <section id="contact" className="scroll-mt-24 border-t border-ink/10 bg-[#f2f1ed] py-16 sm:py-20 lg:py-24">
       <Container>
         <Reveal>
           <SectionHeading badge="Contact Us" heading={brand.name} subtitle={brand.tagline} />
         </Reveal>
 
-        <div className="mt-14 grid min-w-0 gap-10 lg:grid-cols-[minmax(20rem,0.8fr)_minmax(0,1.2fr)] lg:gap-12 xl:gap-16 lg:mt-16">
+        <div className="mt-10 grid min-w-0 gap-6 sm:mt-12 sm:gap-8 lg:mt-16 lg:gap-10">
           <Reveal className="min-w-0">
-            <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <div className="grid min-w-0 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
               <ContactCard icon="pin" label="Address">
-                <p className="contact-value text-sm leading-7 text-slate-700">{data.address}</p>
+                <p className="contact-value text-sm leading-6 text-slate-700">{data.address}</p>
               </ContactCard>
 
               <ContactCard icon="phone" label="Phone">
-                <a className="contact-value text-sm leading-7 text-slate-700 transition-colors hover:text-brand" href={`tel:${data.phone.replace(/\s+/g, '')}`}>
+                <a className="contact-value text-sm leading-6 text-slate-700 transition-colors hover:text-brand" href={`tel:${data.phone.replace(/\s+/g, '')}`}>
                   {data.phone}
                 </a>
               </ContactCard>
 
               <ContactCard icon="mail" label="Email">
-                <a className="contact-value text-sm leading-7 text-slate-700 transition-colors hover:text-brand" href={`mailto:${data.email}`}>
+                <a className="contact-value text-sm leading-6 text-slate-700 transition-colors hover:text-brand" href={`mailto:${data.email}`}>
                   {data.email}
                 </a>
               </ContactCard>
 
               <ContactCard icon="clock" label="Working Hours">
-                <p className="contact-value text-sm leading-7 text-slate-700">{data.hours}</p>
+                <p className="contact-value text-sm leading-6 text-slate-700">{data.hours}</p>
               </ContactCard>
             </div>
           </Reveal>
 
-          <Reveal className="min-w-0" delay={0.08}>
-            <form onSubmit={handleSubmit} noValidate className="min-w-0 border border-ink/10 bg-white p-6 shadow-architectural sm:p-8 lg:p-10">
-              <div className="grid min-w-0 gap-x-8 gap-y-7 sm:grid-cols-2">
+          <Reveal className="mx-auto w-full max-w-4xl min-w-0" delay={0.08}>
+            <form onSubmit={handleSubmit} noValidate className="min-w-0 border border-ink/10 bg-white p-4 shadow-architectural sm:p-7 lg:p-8">
+              <div className="grid min-w-0 gap-x-8 gap-y-4 sm:grid-cols-2 sm:gap-y-5">
                 <Field
-                  label="Name"
+                  label="Full Name *"
                   name="name"
                   value={values.name}
                   onChange={updateField}
                   error={errors.name}
                   autoComplete="name"
+                  required
+                />
+                <Field
+                  label="Phone Number *"
+                  name="phone"
+                  type="tel"
+                  value={values.phone}
+                  onChange={updateField}
+                  error={errors.phone}
+                  autoComplete="tel"
+                  required
                 />
                 <Field
                   label="Email"
@@ -122,29 +162,50 @@ export default function ContactSection({ data, brand }) {
                   autoComplete="email"
                 />
                 <Field
-                  label="Phone"
-                  name="phone"
-                  value={values.phone}
+                  label="Project Type *"
+                  name="projectType"
+                  value={values.projectType}
                   onChange={updateField}
-                  error={errors.phone}
-                  autoComplete="tel"
+                  error={errors.projectType}
+                  options={projectTypes}
+                  placeholder="Select project type"
+                  required
                 />
-                <div className="hidden sm:block" aria-hidden="true" />
+                <Field
+                  label="Budget Range"
+                  name="budget"
+                  value={values.budget}
+                  onChange={updateField}
+                  options={budgetRanges}
+                  placeholder="Select budget range"
+                />
                 <div className="sm:col-span-2">
                   <Field
-                    label="Message"
-                    name="message"
-                    value={values.message}
+                    label="Project Location *"
+                    name="location"
+                    value={values.location}
                     onChange={updateField}
-                    error={errors.message}
+                    error={errors.location}
+                    autoComplete="address-level2"
+                    required
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <Field
+                    label="Project Description *"
+                    name="description"
+                    value={values.description}
+                    onChange={updateField}
+                    error={errors.description}
                     multiline
+                    required
                   />
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-5 border-t border-ink/10 pt-7 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+              <div className="mt-5 grid gap-4 border-t border-ink/10 pt-4 sm:mt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end sm:pt-5">
                 <p className="max-w-xl text-xs leading-6 text-slate-500">
-                  This form does not submit to a website backend. After validation, it opens your email client with the message prepared for {data.email}.
+                  After validation, your email client opens with the project enquiry prepared for {data.email}.
                 </p>
                 <button
                   type="submit"
@@ -170,8 +231,8 @@ export default function ContactSection({ data, brand }) {
 
 function ContactCard({ icon, label, children }) {
   return (
-    <article className="min-w-0 border border-ink/10 bg-white/65 p-5 transition-colors hover:border-brand/35 hover:bg-white sm:p-6">
-      <div className="flex items-start gap-4">
+    <article className="h-full min-w-0 border border-ink/10 bg-white/65 p-4 transition-colors hover:border-brand/35 hover:bg-white sm:p-6">
+      <div className="flex h-full items-center gap-4">
         <span className="mt-0.5 shrink-0 text-brand" aria-hidden="true">
           <Icon name={icon} />
         </span>
@@ -184,7 +245,19 @@ function ContactCard({ icon, label, children }) {
   )
 }
 
-function Field({ label, name, value, onChange, error, type = 'text', autoComplete, multiline = false }) {
+function Field({
+  label,
+  name,
+  value,
+  onChange,
+  error,
+  type = 'text',
+  autoComplete,
+  multiline = false,
+  options,
+  placeholder,
+  required = false
+}) {
   const id = `contact-${name}`
 
   return (
@@ -193,14 +266,33 @@ function Field({ label, name, value, onChange, error, type = 'text', autoComplet
         {label}
       </label>
       <div className="field-shell mt-2" data-invalid={Boolean(error)}>
-        {multiline ? (
+        {options ? (
+          <select
+            id={id}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required={required}
+            className="block w-full min-w-0 bg-transparent px-0 py-3 text-sm text-ink focus:outline-none"
+            aria-invalid={Boolean(error)}
+            aria-describedby={error ? `${id}-error` : undefined}
+          >
+            <option value="">{placeholder}</option>
+            {options.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        ) : multiline ? (
           <textarea
             id={id}
             name={name}
             value={value}
             onChange={onChange}
-            rows={6}
-            className="block min-h-40 w-full resize-y bg-transparent px-0 py-3 text-sm leading-7 text-ink placeholder:text-slate-400 focus:outline-none"
+            rows={3}
+            required={required}
+            className="block min-h-24 w-full resize-y bg-transparent px-0 py-3 text-sm leading-7 text-ink placeholder:text-slate-400 focus:outline-none"
             aria-invalid={Boolean(error)}
             aria-describedby={error ? `${id}-error` : undefined}
           />
@@ -212,6 +304,7 @@ function Field({ label, name, value, onChange, error, type = 'text', autoComplet
             value={value}
             onChange={onChange}
             autoComplete={autoComplete}
+            required={required}
             className="block w-full min-w-0 bg-transparent px-0 py-3 text-sm text-ink placeholder:text-slate-400 focus:outline-none"
             aria-invalid={Boolean(error)}
             aria-describedby={error ? `${id}-error` : undefined}

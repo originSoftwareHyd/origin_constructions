@@ -20,7 +20,7 @@ export default function AboutProcess({ data }) {
                     <span className="mt-2 h-3 w-3 border border-gold" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-semibold tracking-tight text-ink">{step.title}</h3>
+                    <h3 className="text-base font-semibold tracking-tight text-ink sm:text-lg xl:text-2xl">{step.title}</h3>
                     <p className="mt-4 text-sm leading-7 text-slate-600">{step.description}</p>
                   </div>
                 </article>

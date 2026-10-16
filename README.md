@@ -72,15 +72,7 @@ Business content is centralized in `data/siteData.js`. Update text, contact deta
 
 ## Team images
 
-Team photographs live in `public/images/team/`.
-
-Current supplied local photograph:
-
-```text
-public/images/team/mohammed-abdul-baseer.png
-```
-
-To add the other supplied team photographs later, place the files in the same folder and update only the matching `image` property in `data/siteData.js`.
+Team photographs live in `public/images/team/`. To add a team photograph, place the file in that folder and update the matching `image` property in `data/siteData.js`.
 
 The Team component also accepts an HTTPS image URL. Remote URLs are rendered with a native image element so the site does not require a broad or arbitrary `next/image` remote-host allowlist. Local photographs continue to use `next/image`.
 

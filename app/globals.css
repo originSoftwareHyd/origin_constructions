@@ -67,9 +67,27 @@ img {
   margin-inline: auto;
 }
 
+@media (max-width: 1023px) {
+  .team-grid-last-card {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .team-grid-last-card > article {
+    width: calc((100% - 1.25rem) / 2);
+  }
+}
+
 @media (min-width: 640px) {
   .container-shell {
     width: min(100% - 3rem, 90rem);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .team-grid-last-card > article {
+    width: calc((100% - 1.75rem) / 2);
   }
 }
 
@@ -91,6 +109,51 @@ img {
     linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 4rem 4rem;
+}
+
+.hero-image-frame {
+  opacity: 1;
+  clip-path: inset(0);
+}
+
+.hero-image-frame[data-loaded='true'][data-visible='true'] .hero-image-reveal {
+  animation: hero-image-arrive 1.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-image-frame[data-loaded='true'][data-visible='true'] .hero-image-sweep {
+  animation: hero-image-sweep 1.35s ease-in-out 0.85s both;
+}
+
+@keyframes hero-image-arrive {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(2.5rem) scale(0.92);
+    filter: brightness(0.5) saturate(0.65);
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    transform: translateX(0) scale(1);
+    filter: brightness(1) saturate(1);
+  }
+}
+
+@keyframes hero-image-sweep {
+  from {
+    transform: translateX(-130%) skewX(-18deg);
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.9;
+  }
+
+  to {
+    transform: translateX(300%) skewX(-18deg);
+    opacity: 0;
+  }
 }
 
 .eyebrow {

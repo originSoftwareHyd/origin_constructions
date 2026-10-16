@@ -86,6 +86,8 @@ export const siteData = {
         title: 'Construction',
         description:
           "We designs spaces and ambiances to best meet Clients' functional and reasonable standards.",
+        image: '/images/services/construction.jpg',
+        imageAlt: 'Construction crew working on a large building site',
         cta: 'Show More'
       },
       {
@@ -93,6 +95,8 @@ export const siteData = {
         title: 'Interior Designing',
         description:
           'The interior dynamics of built spaces and reasonable standards to be greeting welcome.',
+        image: '/images/services/interior-design.jpg',
+        imageAlt: 'Contemporary living room with warm wood finishes',
         cta: 'Show More'
       },
       {
@@ -100,6 +104,8 @@ export const siteData = {
         title: 'Renovations',
         description:
           'To covering and reasonable standards structure, mechanical, electrical and plumbing for (MEP).',
+        image: '/images/services/renovation-bathroom.jpg',
+        imageAlt: 'Bright renovated bathroom with a modern bathtub and vanity',
         cta: 'Show More'
       }
     ]
@@ -136,17 +142,19 @@ export const siteData = {
       {
         name: 'Mohammed Israr Uddin',
         role: 'CEO & Founder',
-        image: null
+        image: '/images/team/mohammed_israr_uddin.png',
+        imagePosition: 'top'
       },
       {
         name: 'Mohammed Ahsan Uddin Abbas',
         role: 'Researcher | ARCHITECT',
-        image: null
+        image: '/images/team/ahsanuddin_1.png',
+        imagePosition: 'top'
       },
       {
-        name: 'Mohammed Abdul Baseer',
-        role: 'Engineer',
-        image: '/images/team/mohammed-abdul-baseer.png'
+        name: 'Mohammed Athesham Uddin',
+        role: 'Origin Softwares CEO',
+        image: '/images/team/mohammed_athesham_uddin.png'
       }
     ]
   }

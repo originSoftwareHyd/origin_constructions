@@ -87,27 +87,27 @@ export default function Header({ data }) {
               width={180}
               height={48}
               priority
-              sizes="(min-width: 1024px) 180px, (min-width: 640px) 150px, 130px"
-              className="h-auto w-[130px] sm:w-[150px] lg:w-[180px]"
+              sizes="(min-width: 1280px) 180px, (min-width: 640px) 150px, 130px"
+              className="h-auto w-[130px] sm:w-[150px] xl:w-[180px]"
             />
           </a>
 
-          <div className="hidden items-center gap-7 lg:flex">
+          <div className="hidden items-center gap-7 xl:flex">
             {data.navigation.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="group relative py-3 text-[0.67rem] font-extrabold uppercase tracking-[0.14em] text-slate-700 transition-colors hover:text-ink"
+                className="group relative py-3 text-[0.9rem] font-extrabold uppercase tracking-[0.14em] text-slate-700 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:text-brand focus-visible:-translate-y-0.5 focus-visible:text-brand motion-reduce:transform-none motion-reduce:transition-none"
               >
                 {item.name}
-                <span className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-brand transition-transform duration-200 group-hover:scale-x-100" />
+                <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-brand transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100 motion-reduce:transition-none" />
               </a>
             ))}
           </div>
 
           <a
             href="#contact"
-            className="hidden min-h-11 items-center justify-center border border-brand bg-brand px-4 py-3 text-[0.66rem] font-extrabold uppercase tracking-[0.15em] text-white transition-colors hover:bg-brand-dark lg:inline-flex"
+            className="hidden min-h-11 items-center justify-center border border-brand bg-brand px-4 py-3 text-[0.8rem] font-extrabold uppercase tracking-[0.15em] !text-white transition-colors hover:bg-brand-dark xl:inline-flex"
           >
             {data.hero.primaryCta}
           </a>
@@ -116,7 +116,7 @@ export default function Header({ data }) {
             type="button"
             ref={menuButtonRef}
             onClick={() => setIsOpen(true)}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-ink/15 text-ink transition-colors hover:border-brand hover:text-brand lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-ink/15 text-ink transition-colors hover:border-brand hover:text-brand xl:hidden"
             aria-label="Open navigation menu"
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
@@ -129,7 +129,7 @@ export default function Header({ data }) {
       <AnimatePresence>
         {isOpen ? (
           <motion.div
-            className="fixed inset-0 bg-brand-deep/45 lg:hidden"
+            className="fixed inset-0 bg-brand-deep/45 xl:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

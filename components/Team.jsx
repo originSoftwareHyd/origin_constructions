@@ -1,3 +1,4 @@
+
 import Image from 'next/image'
 import Container from './ui/Container'
 import Reveal from './ui/Reveal'
@@ -14,13 +15,20 @@ function getInitials(name) {
 }
 
 function TeamPhoto({ member }) {
+  const imagePosition =
+    member.imagePosition === 'top' ? 'object-top' : 'object-[50%_35%]'
+  const imageClassName = `scale-[1.02] origin-top object-cover ${imagePosition}`
+
   if (!member.image) {
     return (
-      <div className="relative grid aspect-[4/4.6] place-items-center overflow-hidden border border-ink/10 bg-[#e9eef2]" aria-hidden="true">
-        <div className="absolute inset-0 architectural-grid opacity-70" />
-        <div className="absolute left-5 top-5 h-12 w-12 border-l border-t border-gold/70" />
-        <div className="absolute bottom-5 right-5 h-12 w-12 border-b border-r border-brand/25" />
-        <span className="relative text-6xl font-semibold tracking-[-0.07em] text-ink/75 sm:text-7xl">{getInitials(member.name)}</span>
+      <div
+        className="relative grid aspect-square w-full place-items-center overflow-hidden bg-white"
+        aria-hidden="true"
+      >
+        <div className="architectural-grid absolute inset-0 opacity-70" />
+        <span className="relative text-5xl font-semibold tracking-[-0.07em] text-ink/75 sm:text-6xl lg:text-7xl">
+          {getInitials(member.name)}
+        </span>
       </div>
     )
   }
@@ -28,53 +36,75 @@ function TeamPhoto({ member }) {
   const isRemote = /^https?:\/\//i.test(member.image)
 
   return (
-    <div className="relative aspect-[4/4.6] overflow-hidden border border-ink/10 bg-[#e9eef2]">
+    <div className="relative aspect-square w-full overflow-hidden bg-white">
       {isRemote ? (
         <img
           src={member.image}
           alt={member.name}
           loading="lazy"
-          className="h-full w-full object-cover object-[50%_35%] transition-transform duration-500 group-hover:scale-[1.025]"
+          className={`h-full w-full ${imageClassName}`}
         />
       ) : (
         <Image
           src={member.image}
           alt={member.name}
           fill
-          sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
-          className="object-cover object-[50%_35%] transition-transform duration-500 group-hover:scale-[1.025]"
+          sizes="(min-width: 1280px) 360px, (min-width: 640px) 42vw, 46vw"
+          className={imageClassName}
         />
       )}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-deep/20 via-transparent to-transparent opacity-70" />
-      <div className="pointer-events-none absolute left-5 top-5 h-12 w-12 border-l border-t border-white/45" />
-      <div className="pointer-events-none absolute bottom-5 right-5 h-12 w-12 border-b border-r border-white/45" />
     </div>
   )
 }
 
 export default function Team({ data }) {
   return (
-    <section id="team" className="scroll-mt-24 bg-canvas py-24 sm:py-28 lg:py-32">
+    <section
+      id="team"
+      className="scroll-mt-24 bg-canvas py-14 sm:py-18 lg:py-24"
+    >
       <Container>
-        <Reveal>
-          <SectionHeading badge={data.sectionBadge} heading={data.heading} />
-        </Reveal>
+        <div className="mx-auto w-full max-w-7xl">
+          <Reveal>
+            <SectionHeading
+              badge={data.sectionBadge}
+              heading={data.heading}
+            />
+          </Reveal>
 
-        <div className="mt-14 grid gap-7 md:grid-cols-3 lg:mt-16">
-          {data.members.map((member, index) => (
-            <Reveal key={member.name} delay={index * 0.06}>
-              <article className="group">
-                <TeamPhoto member={member} />
-                <div className="flex items-start justify-between gap-5 border-b border-ink/15 py-5">
-                  <div className="min-w-0">
-                    <h3 className="break-words text-xl font-semibold tracking-tight text-ink sm:text-[1.38rem]">{member.name}</h3>
-                    <p className="mt-2 text-[0.67rem] font-extrabold uppercase tracking-[0.15em] text-slate-500">{member.role}</p>
+          <div className="mx-auto mt-10 grid w-full grid-cols-2 gap-x-4 gap-y-9 sm:mt-12 sm:gap-x-6 sm:gap-y-12 lg:mt-14 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-14">
+            {data.members.map((member, index) => (
+              <Reveal
+                key={member.name}
+                className={
+                  data.members.length % 2 === 1 &&
+                  index === data.members.length - 1
+                    ? 'team-grid-last-card'
+                    : ''
+                }
+              >
+                <article className="group flex h-full w-full min-w-0 flex-col">
+                  <TeamPhoto member={member} />
+
+                  <div className="flex flex-1 items-start justify-between gap-2 border-b border-ink/15 py-4 sm:gap-3 sm:py-5">
+                    <div className="min-w-0">
+                      <h3 className="min-h-10 text-sm font-semibold leading-snug tracking-tight text-ink sm:min-h-12 sm:text-lg lg:text-xl">
+                        {member.name}
+                      </h3>
+
+                      <p className="mt-2 text-[0.58rem] font-extrabold uppercase leading-relaxed tracking-[0.12em] text-slate-500 sm:text-[0.67rem] sm:tracking-[0.15em]">
+                        {member.role}
+                      </p>
+                    </div>
+
+                    <span className="shrink-0 pt-1 text-[0.58rem] font-extrabold tracking-[0.12em] text-gold sm:text-[0.65rem]">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                   </div>
-                  <span className="shrink-0 text-[0.61rem] font-extrabold tracking-[0.16em] text-gold">0{index + 1}</span>
-                </div>
-              </article>
-            </Reveal>
-          ))}
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
