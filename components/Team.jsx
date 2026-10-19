@@ -68,7 +68,7 @@ export default function Team({ data }) {
       className="scroll-mt-24 bg-canvas py-14 sm:py-18 lg:py-24"
     >
       <Container>
-        <div className="mx-auto w-full max-w-7xl">
+        <div className="w-full">
           <Reveal>
             <SectionHeading
               badge={data.sectionBadge}

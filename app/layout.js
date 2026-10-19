@@ -43,12 +43,21 @@ export const metadata = {
     url: `${seo.siteUrl}/`,
     title: seo.title,
     description: seo.description,
-    siteName: brand.name
+    siteName: brand.name,
+    images: [
+      {
+        url: '/images/hero/hero-modern-home.jpg',
+        width: 1600,
+        height: 1067,
+        alt: siteData.hero.imageAlt
+      }
+    ]
   },
   twitter: {
     card: 'summary_large_image',
     title: seo.title,
-    description: seo.description
+    description: seo.description,
+    images: ['/images/hero/hero-modern-home.jpg']
   },
   other: {
     'geo.region': 'IN-TG',

@@ -31,7 +31,7 @@ export default function HeroImage({ src, alt = '' }) {
   return (
     <div
       ref={frameRef}
-      className="hero-image-frame group relative mt-4 h-[20rem] w-full overflow-hidden border border-white/10 shadow-2xl shadow-black/25 sm:h-[30rem] xl:h-[32rem]"
+      className="hero-image-frame group relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:h-[clamp(18rem,calc(100svh-23rem),32rem)] border border-white/10 shadow-2xl shadow-black/25"
       data-loaded={isLoaded}
       data-visible={isVisible}
     >
@@ -42,9 +42,9 @@ export default function HeroImage({ src, alt = '' }) {
           alt={alt}
           fill
           priority
-          sizes="(min-width: 1280px) 38rem, (min-width: 640px) 36rem, 100vw"
+          sizes="(min-width: 1024px) 50vw, 100vw"
           onLoad={() => setIsLoaded(true)}
-          className="object-cover object-[90%_center] transition-transform duration-1000 ease-out group-hover:scale-[1.035] motion-reduce:transition-none"
+          className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-[1.035] motion-reduce:transition-none"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-deep/35 via-brand-deep/10 to-transparent" aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/25 via-transparent to-transparent" aria-hidden="true" />

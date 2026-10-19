@@ -85,7 +85,8 @@ No server API was supplied with the project, so the form performs client-side va
 The Origin Constructions logo used in the header and footer is stored at:
 
 ```text
-public/logo/o3.png
+public/logo/origin-constructions.png        # header (dark lettering)
+public/logo/origin-constructions-light.png  # footer (white lettering)
 ```
 
 The favicon uses the supplied Origin Softwares image at:

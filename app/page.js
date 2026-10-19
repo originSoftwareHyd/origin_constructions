@@ -17,7 +17,7 @@ export default function HomePage() {
       <StructuredData data={siteData} />
       <Header data={siteData} />
       <main id="main-content">
-        <Hero data={siteData.hero} brand={siteData.brand} />
+        <Hero data={siteData.hero} brand={siteData.brand} stats={siteData.stats.items} phone={siteData.contact.phone} />
         <AboutProcess data={siteData.about} />
         <Services data={siteData.services} />
         <PortfolioStats data={siteData.stats} />

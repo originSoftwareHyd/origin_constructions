@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "build:dist": "next build && node -e \"require('fs').rmSync('dist',{recursive:true,force:true});require('fs').cpSync('out','dist',{recursive:true})\""
+    "build:dist": "next build && node -e \"const fs=require('fs');fs.mkdirSync('dist',{recursive:true});for(const f of fs.readdirSync('dist'))fs.rmSync('dist/'+f,{recursive:true,force:true});fs.cpSync('out','dist',{recursive:true})\""
   },
   "dependencies": {
     "framer-motion": "11.15.0",

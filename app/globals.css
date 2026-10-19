@@ -156,6 +156,97 @@ img {
   }
 }
 
+.innovation-ticker {
+  animation: innovation-ticker 38s linear infinite;
+}
+
+.innovation-banner:hover .innovation-ticker {
+  animation-play-state: paused;
+}
+
+.innovation-scan {
+  animation: innovation-scan 5.5s ease-in-out 3s infinite;
+  left: -6rem;
+}
+
+.innovation-glow {
+  animation: innovation-glow 7s ease-in-out infinite;
+}
+
+.innovation-highlight {
+  background-size: 200% auto;
+  animation: innovation-shine 6s linear infinite;
+}
+
+.innovation-hook {
+  transform-box: fill-box;
+  transform-origin: top center;
+  animation: innovation-hook 4s ease-in-out infinite;
+}
+
+@keyframes innovation-ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes innovation-scan {
+  0% {
+    left: -6rem;
+    opacity: 0;
+  }
+
+  15%,
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes innovation-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translate(0, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: translate(2.5rem, -50%) scale(1.15);
+  }
+}
+
+@keyframes innovation-shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes innovation-hook {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(22px) rotate(2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .innovation-ticker,
+  .innovation-scan,
+  .innovation-glow,
+  .innovation-highlight,
+  .innovation-hook {
+    animation: none;
+  }
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -180,6 +271,13 @@ img {
   font-size: clamp(3rem, 7.5vw, 7.6rem);
   line-height: 0.92;
   letter-spacing: -0.06em;
+  font-weight: 800;
+}
+
+.hero-heading {
+  font-size: clamp(2.6rem, 4.4vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
   font-weight: 800;
 }
 
@@ -228,6 +326,8 @@ img {
   left: 1rem;
   top: 1rem;
   transform: translateY(-200%);
+  opacity: 0;
+  pointer-events: none;
   background: var(--ink);
   color: white;
   padding: 0.75rem 1rem;
@@ -236,6 +336,8 @@ img {
 
 .skip-link:focus {
   transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

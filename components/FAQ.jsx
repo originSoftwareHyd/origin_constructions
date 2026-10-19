@@ -7,8 +7,8 @@ export default function FAQ({ data }) {
     <section id="faq" className="scroll-mt-24 border-t border-ink/10 bg-canvas py-20 sm:py-24 lg:py-28">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
-          <Reveal>
-            <SectionHeading badge={data.sectionBadge} heading={data.heading} subtitle={data.subtitle} />
+          <Reveal className="lg:sticky lg:top-36 lg:self-start">
+            <SectionHeading badge={data.sectionBadge} heading={data.heading} subtitle={data.subtitle} layout="stacked" />
           </Reveal>
 
           <div className="border-t border-ink/10">

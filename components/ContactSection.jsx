@@ -5,6 +5,7 @@ import Container from './ui/Container'
 import Icon from './ui/Icon'
 import Reveal from './ui/Reveal'
 import SectionHeading from './ui/SectionHeading'
+import Select from './ui/Select'
 
 const initialValues = {
   name: '',
@@ -105,9 +106,9 @@ export default function ContactSection({ data, brand }) {
           <SectionHeading badge={data.sectionBadge} heading={data.heading} subtitle={data.subtitle} />
         </Reveal>
 
-        <div className="mt-10 grid min-w-0 gap-6 sm:mt-12 sm:gap-8 lg:mt-16 lg:gap-10">
+        <div className="mt-10 grid min-w-0 gap-6 sm:mt-12 sm:gap-8 lg:mt-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-stretch lg:gap-8">
           <Reveal className="min-w-0">
-            <div className="grid min-w-0 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
+            <div className="grid h-full min-w-0 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-1 lg:grid-rows-4">
               <ContactCard icon="pin" label="Address">
                 <p className="contact-value text-sm leading-6 text-slate-700">{data.address}</p>
               </ContactCard>
@@ -130,8 +131,8 @@ export default function ContactSection({ data, brand }) {
             </div>
           </Reveal>
 
-          <Reveal className="mx-auto w-full max-w-4xl min-w-0" delay={0.08}>
-            <form onSubmit={handleSubmit} noValidate className="min-w-0 border border-ink/10 bg-white p-4 shadow-architectural sm:p-7 lg:p-8">
+          <Reveal className="h-full w-full min-w-0" delay={0.08}>
+            <form onSubmit={handleSubmit} noValidate className="h-full min-w-0 border border-ink/10 bg-white p-4 shadow-architectural sm:p-7 lg:p-8">
               <div className="grid min-w-0 gap-x-8 gap-y-4 sm:grid-cols-2 sm:gap-y-5">
                 <Field
                   label="Full Name *"
@@ -179,7 +180,7 @@ export default function ContactSection({ data, brand }) {
                   options={budgetRanges}
                   placeholder="Select budget range"
                 />
-                <div className="sm:col-span-2">
+                <div>
                   <Field
                     label="Project Location *"
                     name="location"
@@ -262,28 +263,22 @@ function Field({
 
   return (
     <div className="min-w-0">
-      <label htmlFor={id} className="field-label">
+      <label htmlFor={id} id={`${id}-label`} className="field-label">
         {label}
       </label>
       <div className="field-shell mt-2" data-invalid={Boolean(error)}>
         {options ? (
-          <select
+          <Select
             id={id}
+            labelId={`${id}-label`}
             name={name}
             value={value}
             onChange={onChange}
-            required={required}
-            className="block w-full min-w-0 bg-transparent px-0 py-3 text-sm text-ink focus:outline-none"
-            aria-invalid={Boolean(error)}
-            aria-describedby={error ? `${id}-error` : undefined}
-          >
-            <option value="">{placeholder}</option>
-            {options.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
+            options={options}
+            placeholder={placeholder}
+            invalid={Boolean(error)}
+            describedBy={error ? `${id}-error` : undefined}
+          />
         ) : multiline ? (
           <textarea
             id={id}

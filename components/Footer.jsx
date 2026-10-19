@@ -79,9 +79,9 @@ export default function Footer({ data }) {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start lg:gap-16">
           {/* Brand */}
           <div className="min-w-0">
-            <div className="inline-flex max-w-full rounded-none border border-black/10 bg-transparent p-3">
+            <div className="inline-flex max-w-full">
               <Image
-                src="/logo/o4.png"
+                src={data.brand.logoLight}
                 alt={data.brand.logoAlt}
                 width={230}
                 height={61}

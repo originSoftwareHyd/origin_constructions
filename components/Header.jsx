@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import Icon from './ui/Icon'
 
-const headerLogoSrc = '/logo/header_latest.png'
+const headerLogoSrc = '/logo/origin-constructions.png'
 
 export default function Header({ data }) {
   const [isOpen, setIsOpen] = useState(false)

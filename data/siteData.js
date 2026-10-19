@@ -6,8 +6,8 @@ export const siteData = {
     shortDescription:
       'Origin Construction is a Hyderabad-based construction company offering turnkey house construction, villa and apartment building, commercial construction, interior design and renovation services across Hyderabad, Secunderabad and Telangana.',
     copyright: '© 2024 Origin Construction, Hyderabad, Telangana. All Rights Reserved. Powered by Origin Softwares.',
-    logo: '/logo/o3.png',
-
+    logo: '/logo/origin-constructions.png',
+    logoLight: '/logo/origin-constructions-light.png',
     logoAlt: 'Origin Construction — construction and interior design company in Hyderabad, Telangana'
   },
 
@@ -88,8 +88,15 @@ export const siteData = {
   hero: {
     subTagline: 'Construction Company in Hyderabad, Telangana',
     headline: 'Build Your Dream Home in Hyderabad with Origin Construction',
+    headlineHighlight: 'Hyderabad',
     description:
       'Turnkey house construction, villas, apartments, commercial buildings, interior design and renovations — designed to GHMC and HMDA approval norms and delivered with transparent pricing, quality materials and on-time handover across Hyderabad and Telangana.',
+    highlights: [
+      'GHMC & HMDA-ready drawings',
+      'Itemised BOQ & transparent pricing',
+      'Branded materials & quality checks',
+      'On-time handover, stage by stage'
+    ],
     primaryCta: 'Get Free Quote',
     secondaryCta: 'Explore Services',
     visual: '/images/hero/hero-architecture.svg',
@@ -105,8 +112,32 @@ export const siteData = {
       'Every project starts with your plot, your budget and the way you want to live or work. Our architects prepare Vastu-compliant floor plans, 3D elevations and working drawings aligned with GHMC, HMDA and TG-bPASS building permission requirements, and our site engineers then execute with RCC framed structures, branded cement and steel, and stage-wise quality checks.',
       'Whether it is a G+1 independent house in Attapur, a duplex villa in Kokapet, a G+4 apartment in Rajendranagar or a commercial showroom in Gachibowli, we follow the same disciplined process: clear scope, itemised BOQ, fixed payment milestones and regular progress updates.'
     ],
-    bannerQuote:
-      'INNOVATION STARTS HERE — Origin Construction delivers end-to-end architecture, engineering and construction consultancy to homeowners and leading engineering companies across Hyderabad and Telangana.',
+    banner: {
+      eyebrow: 'Innovation Starts Here',
+      heading: 'Design, engineering and construction — delivered by one team in Hyderabad.',
+      highlight: 'one team',
+      text:
+        'Origin Construction delivers end-to-end architecture, structural engineering and construction consultancy to homeowners, landowners and leading engineering companies across Hyderabad and Telangana.',
+      points: [
+        { value: '120+', label: 'Projects delivered' },
+        { value: '3-in-1', label: 'Design · Build · Interiors' },
+        { value: '15+', label: 'Ongoing projects' }
+      ],
+      cta: 'Start Your Project',
+      secondaryCta: 'Our Services',
+      ticker: [
+        'House Construction Hyderabad',
+        'Villa Construction',
+        'Apartment Construction',
+        'Commercial Buildings',
+        'Interior Design',
+        'Modular Kitchens',
+        'Home Renovation',
+        'MEP Works',
+        'Vastu-Compliant Plans',
+        'GHMC & HMDA Drawings'
+      ]
+    },
 
     steps: [
       {
