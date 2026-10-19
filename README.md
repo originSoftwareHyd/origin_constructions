@@ -88,10 +88,10 @@ The Origin Constructions logo used in the header and footer is stored at:
 public/logo/o3.png
 ```
 
-The favicon uses the supplied logo mark treatment at:
+The favicon uses the supplied Origin Softwares image at:
 
 ```text
-public/logo/origin-mark.png
+public/logo/origin softwares favicon .png
 ```
 
 The visual system uses the logo's sampled blue and neutral gray as the primary brand colors, with architectural gold retained only as a restrained secondary detail.

@@ -39,8 +39,8 @@ export const metadata = {
     description: siteData.hero.description
   },
   icons: {
-    icon: '/logo/origin-mark.png',
-    shortcut: '/logo/origin-mark.png'
+    icon: '/logo/origin%20softwares%20favicon%20.png',
+    shortcut: '/logo/origin%20softwares%20favicon%20.png'
   }
 }
 

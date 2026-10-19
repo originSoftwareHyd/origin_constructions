@@ -16,7 +16,11 @@ function getInitials(name) {
 
 function TeamPhoto({ member }) {
   const imagePosition =
-    member.imagePosition === 'top' ? 'object-top' : 'object-[50%_35%]'
+    member.imagePosition === 'top'
+      ? 'object-top'
+      : member.imagePosition === 'center'
+        ? 'object-center'
+        : 'object-[50%_35%]'
   const imageClassName = `scale-[1.02] origin-top object-cover ${imagePosition}`
 
   if (!member.image) {

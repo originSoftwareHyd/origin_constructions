@@ -146,15 +146,16 @@ export const siteData = {
         imagePosition: 'top'
       },
       {
+        name: 'Mohammed Athesham Uddin',
+        role: 'Origin Softwares CEO',
+        image: '/images/team/mohammed_athesham_uddin.png',
+        imagePosition: 'center'
+      },
+      {
         name: 'Mohammed Ahsan Uddin Abbas',
         role: 'Researcher | ARCHITECT',
         image: '/images/team/ahsanuddin_1.png',
         imagePosition: 'top'
-      },
-      {
-        name: 'Mohammed Athesham Uddin',
-        role: 'Origin Softwares CEO',
-        image: '/images/team/mohammed_athesham_uddin.png'
       }
     ]
   }
