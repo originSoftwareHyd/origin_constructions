@@ -47,18 +47,18 @@ export default function Hero({ data, brand }) {
           <div className="w-full max-w-[38rem] lg:justify-self-end">
             <div className="relative overflow-hidden border border-white/15 bg-white/5 p-4 sm:p-5">
               <div className="flex items-center justify-between border-b border-white/10 pb-4 text-[0.62rem] font-extrabold uppercase tracking-[0.18em] text-white/50">
-                <span>{brand.name}</span>
+                <span>{brand.name} · Hyderabad</span>
                 <span>01</span>
               </div>
 
-              <HeroImage src={heroImage} />
+              <HeroImage src={heroImage} alt={data.imageAlt} />
             </div>
           </div>
         </div>
       </Container>
 
       <div className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-[0.6rem] font-extrabold uppercase tracking-[0.18em] text-white/45 sm:block" aria-hidden="true">
-        Origin Construction
+        Origin Construction · Hyderabad, Telangana
       </div>
     </section>
   )

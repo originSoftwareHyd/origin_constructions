@@ -102,7 +102,7 @@ export default function ContactSection({ data, brand }) {
     <section id="contact" className="scroll-mt-24 border-t border-ink/10 bg-[#f2f1ed] py-16 sm:py-20 lg:py-24">
       <Container>
         <Reveal>
-          <SectionHeading badge="Contact Us" heading={brand.name} subtitle={brand.tagline} />
+          <SectionHeading badge={data.sectionBadge} heading={data.heading} subtitle={data.subtitle} />
         </Reveal>
 
         <div className="mt-10 grid min-w-0 gap-6 sm:mt-12 sm:gap-8 lg:mt-16 lg:gap-10">

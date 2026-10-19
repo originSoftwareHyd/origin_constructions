@@ -8,35 +8,53 @@ const inter = Inter({
   variable: '--font-inter'
 })
 
+const { brand, seo } = siteData
+
 export const metadata = {
-  metadataBase: new URL('https://originconstruction.in'),
+  metadataBase: new URL(seo.siteUrl),
   title: {
-    default: `${siteData.brand.name} — ${siteData.brand.tagline}`,
-    template: `%s | ${siteData.brand.name}`
+    default: seo.title,
+    template: `%s | ${brand.name} Hyderabad`
   },
-  description: siteData.hero.description,
-  keywords: [
-    'Origin Construction',
-    'construction',
-    'interior designing',
-    'renovations',
-    'architectural design',
-    'Hyderabad construction'
-  ],
+  description: seo.description,
+  keywords: seo.keywords,
+  applicationName: brand.name,
+  authors: [{ name: brand.name }],
+  creator: brand.name,
+  publisher: brand.name,
+  category: 'Construction',
   alternates: {
-    canonical: 'https://originconstruction.in/'
+    canonical: `${seo.siteUrl}/`
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
   },
   openGraph: {
     type: 'website',
-    url: 'https://originconstruction.in/',
-    title: `${siteData.brand.name} — ${siteData.brand.tagline}`,
-    description: siteData.hero.description,
-    siteName: siteData.brand.name
+    locale: 'en_IN',
+    url: `${seo.siteUrl}/`,
+    title: seo.title,
+    description: seo.description,
+    siteName: brand.name
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteData.brand.name} — ${siteData.brand.tagline}`,
-    description: siteData.hero.description
+    title: seo.title,
+    description: seo.description
+  },
+  other: {
+    'geo.region': 'IN-TG',
+    'geo.placename': 'Hyderabad, Telangana',
+    'geo.position': '17.3616;78.4110',
+    ICBM: '17.3616, 78.4110'
   },
   icons: {
     icon: '/logo/origin%20softwares%20favicon%20.png',
@@ -46,7 +64,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en-IN" className={inter.variable}>
       <body className="font-sans">
         <a className="skip-link" href="#main-content">
           Skip to content

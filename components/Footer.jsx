@@ -91,8 +91,22 @@ export default function Footer({ data }) {
             </div>
 
             <p className="mt-5 max-w-xl text-sm leading-7 text-white/60">
-              {data.brand.tagline}
+              {data.brand.shortDescription}
             </p>
+
+            <address className="mt-5 max-w-xl text-sm not-italic leading-7 text-white/60">
+              <strong className="font-semibold text-white/80">{data.brand.name}</strong>
+              <br />
+              {data.contact.address}
+              <br />
+              <a className="transition-colors hover:text-white" href={`tel:${data.contact.phone.replace(/\s+/g, '')}`}>
+                {data.contact.phone}
+              </a>
+              {' · '}
+              <a className="transition-colors hover:text-white" href={`mailto:${data.contact.email}`}>
+                {data.contact.email}
+              </a>
+            </address>
           </div>
 
           {/* Footer navigation + social */}

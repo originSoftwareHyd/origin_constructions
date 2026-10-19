@@ -73,6 +73,7 @@ export default function Team({ data }) {
             <SectionHeading
               badge={data.sectionBadge}
               heading={data.heading}
+              subtitle={data.subtitle}
             />
           </Reveal>
 

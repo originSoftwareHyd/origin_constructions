@@ -9,6 +9,11 @@ export default function AboutProcess({ data }) {
         <div className="grid gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
           <Reveal>
             <SectionHeading badge={data.sectionBadge} heading={data.heading} subtitle={data.subtitle} />
+            {data.paragraphs?.map((paragraph) => (
+              <p key={paragraph} className="mt-5 max-w-2xl text-sm leading-7 text-slate-600">
+                {paragraph}
+              </p>
+            ))}
           </Reveal>
 
           <div className="relative grid gap-0 border-l border-ink/10 sm:grid-cols-3 sm:border-l-0 sm:border-t">

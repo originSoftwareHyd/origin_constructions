@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
-export default function HeroImage({ src }) {
+export default function HeroImage({ src, alt = '' }) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const imageRef = useRef(null)
@@ -39,7 +39,7 @@ export default function HeroImage({ src }) {
         <Image
           src={src}
           ref={imageRef}
-          alt=""
+          alt={alt}
           fill
           priority
           sizes="(min-width: 1280px) 38rem, (min-width: 640px) 36rem, 100vw"

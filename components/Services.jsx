@@ -24,6 +24,16 @@ export default function Services({ data }) {
                   <div className="mt-7 flex flex-1 flex-col">
                     <h3 className="min-h-9 text-2xl font-semibold tracking-tight text-ink">{item.title}</h3>
                     <p className="mt-4 min-h-28 text-sm leading-7 text-slate-600">{item.description}</p>
+                    {item.highlights?.length ? (
+                      <ul className="mt-5 grid gap-2 text-sm leading-6 text-slate-700">
+                        {item.highlights.map((highlight) => (
+                          <li key={highlight} className="flex items-start gap-2.5">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-brand" aria-hidden="true" />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
                     <a
                       href="#contact"
                       className="mt-auto inline-flex items-center gap-2 pt-7 text-[0.67rem] font-extrabold uppercase tracking-[0.16em] text-brand-dark transition-colors hover:text-brand"
