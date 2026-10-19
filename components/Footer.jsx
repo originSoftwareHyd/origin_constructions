@@ -82,7 +82,7 @@ export default function Footer({ data }) {
             <div className="inline-flex max-w-full rounded-none border border-black/10 bg-transparent p-3">
               <Image
                 src="/logo/o4.png"
-                alt={data.brand.logoAlt}   
+                alt={data.brand.logoAlt}
                 width={230}
                 height={61}
                 sizes="(max-width: 640px) 195px, 230px"
@@ -168,15 +168,41 @@ export default function Footer({ data }) {
           </div>
         </div>
 
-        {/* Bottom attribution */}
+        {/* Bottom attribution
         <div className="mt-10 grid gap-4 border-t border-white/10 pt-5 text-[0.61rem] font-semibold uppercase tracking-[0.12em] text-white/38 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
           <span className="min-w-0 break-words">
             {data.brand.copyright}
           </span>
 
           <span className="text-white/55">
-            Developed by Origin Softwares
+            Developed by{' '}
+            <a
+              href="https://www.originsoftwares.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-white"
+            >
+              Origin Softwares
+            </a>
           </span>
+        </div> */}
+        {/* Bottom attribution */}
+        <div className="mt-10 grid gap-4 border-t border-white/10 pt-5 text-[0.61rem] font-semibold uppercase tracking-[0.12em] text-white/38 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+          <span className="min-w-0 break-words">
+            {data.brand.copyright}
+          </span>
+
+          <p className="relative z-10 w-fit text-sm font-semibold normal-case tracking-normal text-white/75 sm:text-base">
+            Developed by{' '}
+            <a
+              href="https://www.originsoftwares.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pointer-events-auto inline-block cursor-pointer text-white underline decoration-white/50 underline-offset-4 transition-colors hover:text-brand-accent hover:decoration-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
+            >
+              Origin Softwares
+            </a>
+          </p>
         </div>
       </Container>
     </footer>
